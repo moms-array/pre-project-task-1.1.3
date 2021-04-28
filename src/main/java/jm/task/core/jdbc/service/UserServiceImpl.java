@@ -10,32 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDao dao_jdbc;
+    private UserDao user_dao;
     public UserServiceImpl(){
-        dao_jdbc = new UserDaoJDBCImpl();
+        user_dao = new UserDaoJDBCImpl();
     }
 
     public void createUsersTable() {
-        dao_jdbc.createUsersTable();
+        user_dao.createUsersTable();
     }
 
     public void dropUsersTable() {
-        dao_jdbc.dropUsersTable();
+        user_dao.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        dao_jdbc.saveUser(name,lastName,age);
+        user_dao.saveUser(name,lastName,age);
     }
 
     public void removeUserById(long id) {
-        dao_jdbc.removeUserById(id);
+        user_dao.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        return dao_jdbc.getAllUsers();
+        return user_dao.getAllUsers();
     }
 
     public void cleanUsersTable() {
-        dao_jdbc.cleanUsersTable();
+        user_dao.cleanUsersTable();
     }
 }
