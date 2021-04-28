@@ -1,18 +1,18 @@
 package jm.task.core.jdbc.service;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
-import javax.xml.crypto.Data;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private UserDao user_dao;
     public UserServiceImpl(){
-        user_dao = new UserDaoJDBCImpl();
+        user_dao = new UserDaoHibernateImpl();
     }
 
     public void createUsersTable() {
@@ -38,4 +38,5 @@ public class UserServiceImpl implements UserService {
     public void cleanUsersTable() {
         user_dao.cleanUsersTable();
     }
+
 }
