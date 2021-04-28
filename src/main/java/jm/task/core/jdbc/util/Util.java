@@ -52,7 +52,11 @@ public class Util {
                     StandardServiceRegistryBuilder.destroy(registry);
                 }
             }
+            System.out.println("connection successful");
         }
         return sessionFactory;
+    }
+    public static void closed(){
+        StandardServiceRegistryBuilder.destroy(registry);
     }
 }
