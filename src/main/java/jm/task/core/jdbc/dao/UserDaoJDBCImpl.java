@@ -4,6 +4,7 @@ import jm.task.core.jdbc.Main;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ public class UserDaoJDBCImpl  implements UserDao {
         Statement statement = null;
         String sql = "CREATE TABLE if not exists User(id BIGINT not null  AUTO_INCREMENT PRIMARY KEY , name varchar(24), lastname varchar(24), age TINYINT)";
         try{
-            connection = Main.getConnection();
+            connection = Util.getConnection();
             statement=connection.createStatement();
             statement.executeUpdate(sql);
         }catch (SQLException | ClassNotFoundException e){
@@ -40,7 +41,7 @@ public class UserDaoJDBCImpl  implements UserDao {
         Statement statement = null;
         String sql = "DROP TABLE User";
         try{
-            connection = Main.getConnection();
+            connection = Util.getConnection();
             statement=connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("table is DELETE");
@@ -60,7 +61,7 @@ public class UserDaoJDBCImpl  implements UserDao {
         String sql = "INSERT INTO User(NAME , LASTNAME, AGE) VALUES('" + user.getName() + "', '"
                 + user.getLastName() + "', " + user.getAge() + ")";
         try{
-            connection = Main.getConnection();
+            connection = Util.getConnection();
             statement=connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("user " + name + " is add");
@@ -78,7 +79,7 @@ public class UserDaoJDBCImpl  implements UserDao {
         Statement statement ;
         String sql = "DELETE from User where  (id=" + id + ")";
         try{
-            connection = Main.getConnection();
+            connection = Util.getConnection();
             statement=connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("User with id = " + id + " is delete");
@@ -97,7 +98,7 @@ public class UserDaoJDBCImpl  implements UserDao {
         String sql = "SELECT * FROM User";
         List<User> list = new ArrayList<>();
         try{
-            connection = Main.getConnection();
+            connection = Util.getConnection();
             statement=connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
@@ -124,7 +125,7 @@ public class UserDaoJDBCImpl  implements UserDao {
         Statement statement = null;
         String sql = "DELETE from User";
         try{
-            connection = Main.getConnection();
+            connection = Util.getConnection();
             statement=connection.createStatement();
             statement.executeUpdate(sql);
             System.out.println("all users is  delete");
