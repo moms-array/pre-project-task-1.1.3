@@ -14,12 +14,15 @@ import java.util.List;
 
 public class Main {
 
+
+
     public static void main(String[] args) throws ClassNotFoundException {
         // реализуйте алгоритм здесь
         UserService userService = new UserServiceImpl();
+        userService.dropUsersTable();
         userService.createUsersTable();
         userService.saveUser("Michal", "Conor", (byte)45);
-        userService.saveUser("Anna", "Dolgorukova", (byte)98);
+        userService.saveUser("Anna", "", (byte)98);
         userService.saveUser("Petr", "Mihailov", (byte)32);
         userService.saveUser("Mary", "Patrushina", (byte) 28);
         List<User> list = userService.getAllUsers();
@@ -38,8 +41,6 @@ public class Main {
         for(User x : list){
             System.out.println(x.toString());
         }
-        userService.dropUsersTable();
-
 
     }
 }
